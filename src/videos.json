@@ -1,10 +1,10 @@
 [
-    { "id": 1, "url": "https://2o01wbvhjojd64pi.public.blob.vercel-storage.com/christine-sb26.mp4" },
-    { "id": 2, "url": "https://2o01wbvhjojd64pi.public.blob.vercel-storage.com/joann-sb26.mp4" },
-    { "id": 3, "url": "https://2o01wbvhjojd64pi.public.blob.vercel-storage.com/thu.mp4" },  
-    { "id": 4, "url": "https://2o01wbvhjojd64pi.public.blob.vercel-storage.com/hana.mp4" },
-    { "id": 5, "url": "https://2o01wbvhjojd64pi.public.blob.vercel-storage.com/tammy.mp4" },
-    { "id": 6, "url": "https://2o01wbvhjojd64pi.public.blob.vercel-storage.com/icarus.mp4" },
-    { "id": 7, "url": "https://2o01wbvhjojd64pi.public.blob.vercel-storage.com/andre.mp4" },
-    { "id": 8, "url": "https://2o01wbvhjojd64pi.public.blob.vercel-storage.com/paola.mp4" }
+    { "id": 1, "url": "../videos/christine-sb26.mp4" },
+    { "id": 2, "url": "../videos/joann-sb26.mp4" },
+    { "id": 3, "url": "../videos/thu.mp4" },  
+    { "id": 4, "url": "../videos/hana.mp4" },
+    { "id": 5, "url": "../videos/tammy.mp4" },
+    { "id": 6, "url": "../videos/icarus.mp4" },
+    { "id": 7, "url": "../videos/andre.mp4" },
+    { "id": 8, "url": "../videos/paola.mp4" }
 ]
