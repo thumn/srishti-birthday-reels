@@ -1,11 +1,32 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from "react";
 
-const VideoItem = ({ url, isLast, isMuted, setIsMuted, isFirst }) => {
+const VideoItem = ({ url, isMuted, setIsMuted, isFirst, isActive }) => {
   const videoRef = useRef(null);
   // For the first reel: start paused until the user taps play.
   const userPausedRef = useRef(!!isFirst);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isInView, setIsInView] = useState(false);
+
+  // Sync playback with the 'isActive' prop sent from App.jsx
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || !url) return;
+
+    if (isActive) {
+      // If it's the active video and user hasn't manually paused
+      if (!userPausedRef.current) {
+        video
+          .play()
+          .then(() => setIsPlaying(true))
+          .catch((err) => console.log("Autoplay blocked:", err));
+      }
+    } else {
+      // If it's not active, pause it
+      video.pause();
+      setIsPlaying(false);
+      // Reset userPaused when scrolling away so it's fresh if they scroll back
+      userPausedRef.current = false;
+    }
+  }, [isActive, url]); // Re-run when isActive or the URL changes
 
   useEffect(() => {
     if (!isFirst) return;
@@ -22,65 +43,22 @@ const VideoItem = ({ url, isLast, isMuted, setIsMuted, isFirst }) => {
 
     if (video.paused) {
       userPausedRef.current = false;
-      if (typeof setIsMuted === 'function') setIsMuted(false);
+      if (typeof setIsMuted === "function") setIsMuted(false);
       video
         .play()
         .then(() => setIsPlaying(true))
         .catch((error) => {
           userPausedRef.current = true;
-          if (typeof setIsMuted === 'function') setIsMuted(true);
-          console.log('Play prevented:', error);
+          if (typeof setIsMuted === "function") setIsMuted(true);
+          console.log("Play prevented:", error);
         });
     } else {
       userPausedRef.current = true;
       video.pause();
-      if (typeof setIsMuted === 'function') setIsMuted(true);
+      if (typeof setIsMuted === "function") setIsMuted(true);
       setIsPlaying(false);
     }
   };
-
-  useEffect(() => {
-    // Lower threshold makes autoplay trigger more consistently inside scroll containers.
-    const options = { threshold: 0.2 };
-    const callback = (entries) => {
-      entries.forEach((entry) => {
-        const video = videoRef.current;
-        if (!video) return;
-
-        if (entry.isIntersecting) {
-          setIsInView(true);
-          if (!userPausedRef.current) {
-            video
-              .play()
-              .then(() => {
-                setIsPlaying(true);
-              })
-              .catch((error) => {
-                // If the browser blocks autoplay, the overlay will remain.
-                console.log('Autoplay prevented:', error);
-              });
-          } else {
-            video.pause();
-            setIsPlaying(false);
-          }
-        } else {
-          setIsInView(false);
-          video.pause();
-          setIsPlaying(false);
-        }
-      });
-    };
-
-    // Use the scroll container as the IntersectionObserver root so autoplay triggers
-    // consistently when scrolling inside `.reels-container`.
-    const root = document.querySelector('.reels-container');
-    const observer = new IntersectionObserver(callback, { ...options, root });
-    if (videoRef.current) observer.observe(videoRef.current);
-
-    return () => {
-      if (videoRef.current) observer.unobserve(videoRef.current);
-    };
-  }, []);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -89,16 +67,24 @@ const VideoItem = ({ url, isLast, isMuted, setIsMuted, isFirst }) => {
     const handlePlay = () => setIsPlaying(true);
     const handlePause = () => setIsPlaying(false);
 
-    video.addEventListener('play', handlePlay);
-    video.addEventListener('pause', handlePause);
+    video.addEventListener("play", handlePlay);
+    video.addEventListener("pause", handlePause);
 
     return () => {
-      video.removeEventListener('play', handlePlay);
-      video.removeEventListener('pause', handlePause);
+      video.removeEventListener("play", handlePlay);
+      video.removeEventListener("pause", handlePause);
     };
   }, []);
 
-  if (!url) return null;
+  // If there's no URL, don't even render the <video> tag.
+  // This physically prevents the browser from making a network request.
+  if (!url) {
+    return (
+      <div className="video-section placeholder">
+        <div className="spinner">Loading...</div>
+      </div>
+    );
+  }
 
   return (
     <div
@@ -108,7 +94,7 @@ const VideoItem = ({ url, isLast, isMuted, setIsMuted, isFirst }) => {
       tabIndex={0}
       onClick={togglePlayPauseAndAudio}
       onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
+        if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
           togglePlayPauseAndAudio();
         }
@@ -124,7 +110,7 @@ const VideoItem = ({ url, isLast, isMuted, setIsMuted, isFirst }) => {
         preload="auto"
       />
 
-      {!isPlaying && isInView && (
+      {!isPlaying && isActive && (
         <button
           type="button"
           className="play-overlay-button"
