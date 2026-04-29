@@ -1,10 +1,10 @@
 [
-    { "id": 1, "url": "https://github.com/thumn/srishti-birthday-reels/blob/main/public/videos/christine-sb26.mp4" },
-    { "id": 2, "url": "https://github.com/thumn/srishti-birthday-reels/blob/main/public/videos/joann-sb26.mp4" },
-    { "id": 3, "url": "https://github.com/thumn/srishti-birthday-reels/blob/main/public/videos/thu.mp4" },  
-    { "id": 4, "url": "https://github.com/thumn/srishti-birthday-reels/blob/main/public/videos/hana.mp4" },
-    { "id": 5, "url": "https://github.com/thumn/srishti-birthday-reels/blob/main/public/videos/tammy.mp4" },
-    { "id": 6, "url": "https://github.com/thumn/srishti-birthday-reels/blob/main/public/videos/icarus.mp4" },
-    { "id": 7, "url": "https://github.com/thumn/srishti-birthday-reels/blob/main/public/videos/andre.mp4" },
-    { "id": 8, "url": "https://github.com/thumn/srishti-birthday-reels/blob/main/public/videos/paola.mp4" }
+    { "id": 1, "url": "https://raw.githubusercontent.com/thumn/srishti-birthday-reels/main/public/videos/christine-sb26.mp4" },
+    { "id": 2, "url": "https://raw.githubusercontent.com/thumn/srishti-birthday-reels/main/public/videos/joann-sb26.mp4" },
+    { "id": 3, "url": "https://raw.githubusercontent.com/thumn/srishti-birthday-reels/main/public/videos/thu.mp4" },
+    { "id": 4, "url": "https://raw.githubusercontent.com/thumn/srishti-birthday-reels/main/public/videos/hana.mp4" },
+    { "id": 5, "url": "https://raw.githubusercontent.com/thumn/srishti-birthday-reels/main/public/videos/tammy.mp4" },
+    { "id": 6, "url": "https://raw.githubusercontent.com/thumn/srishti-birthday-reels/main/public/videos/icarus.mp4" },
+    { "id": 7, "url": "https://raw.githubusercontent.com/thumn/srishti-birthday-reels/main/public/videos/andre.mp4" },
+    { "id": 8, "url": "https://raw.githubusercontent.com/thumn/srishti-birthday-reels/main/public/videos/paola.mp4" }
 ]
