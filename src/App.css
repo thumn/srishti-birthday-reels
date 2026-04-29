@@ -1,0 +1,68 @@
+.reels-container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory; /* This enables the snap effect */
+  background-color: black;
+}
+
+.video-section {
+  height: 100vh;
+  width: 100vw;
+  scroll-snap-align: start; /* Each section snaps to the top */
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.video-player {
+  height: 100%;
+  width: 100%;
+  object-fit: cover; /* Makes video fill the screen like Reels */
+}
+
+.last-video-overlay {
+  position: absolute;
+  bottom: 100px;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 1.5rem;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 20px 0;
+}
+
+.mute-floating-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px); /* Modern glassmorphism effect */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 10px 16px;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Optional: Use a sage green or rust color for the text 
+   to give it a specific aesthetic. */
+.mute-floating-button:active {
+  transform: scale(0.95);
+  background: rgba(122, 135, 114, 0.8); /* Sage-like green */
+}
+
+.last-video-overlay {
+  /* ... previous styles ... */
+  background: rgba(186, 92, 66, 0.7); /* Rust/Terracotta accent */
+  border-radius: 12px;
+  width: 90%;
+  left: 5%;
+  bottom: 40px;
+}
