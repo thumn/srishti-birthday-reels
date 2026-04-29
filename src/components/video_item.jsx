@@ -117,7 +117,7 @@ const VideoItem = ({ url, isLast, isMuted, setIsMuted, isFirst }) => {
       <video
         ref={videoRef}
         className="video-player"
-        src={url}
+        src={`${url}#t=0.1`}
         loop
         playsInline
         muted={isMuted} // Controlled by the parent state
