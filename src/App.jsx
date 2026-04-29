@@ -38,7 +38,7 @@ function App() {
   return (
     <div className="reels-container">
       <div className="top-banner" aria-hidden="true">
-        Srishti Reels
+        Srishtigram Reels
       </div>
       {videoData.map((video, index) => {
         const isActive = activeIndex === index;
