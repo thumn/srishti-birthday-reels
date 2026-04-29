@@ -8,6 +8,9 @@ function App() {
 
   return (
     <div className="reels-container">
+      <div className="top-banner" aria-hidden="true">
+        Srishti Reels
+      </div>
       {videoData.map((video, index) => (
         <VideoItem 
           key={video.id} 
