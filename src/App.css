@@ -60,19 +60,6 @@ html, body {
   object-fit: cover; /* Makes video fill the screen like Reels */
 }
 
-.last-video-overlay {
-  position: absolute;
-  bottom: 100px;
-  width: 100%;
-  text-align: center;
-  color: white;
-  font-family: sans-serif;
-  font-weight: bold;
-  font-size: 1.5rem;
-  background: rgba(0, 0, 0, 0.4);
-  padding: 20px 0;
-}
-
 .mute-floating-button {
   position: fixed;
   top: 20px;

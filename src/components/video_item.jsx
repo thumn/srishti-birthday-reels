@@ -138,12 +138,6 @@ const VideoItem = ({ url, isLast, isMuted, setIsMuted, isFirst }) => {
           ▶
         </button>
       )}
-      
-      {isLast && (
-        <div className="last-video-overlay">
-          That's the last one, happy birthday! 🎂
-        </div>
-      )}
     </div>
   );
 };
