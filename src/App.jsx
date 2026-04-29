@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import VideoItem from './VideoItem';
+import VideoItem from './components/video_item';
 import videoData from './videos.json';
 
 function App() {
